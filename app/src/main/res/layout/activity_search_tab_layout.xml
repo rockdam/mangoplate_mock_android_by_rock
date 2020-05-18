@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:clickable="true"
+    android:focusable="true"
+
+    tools:context="com.softSquared.mangoplate.src.home.search_restaurant.localSearchTab_layout.LocalSearchTabLayout">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/layout_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="center"
+
+        android:background="@color/white"
+        app:tabIndicatorColor="@color/Mangoplate_orange"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/Mangoplate_orange"
+        app:tabTextColor="@color/grey_500" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager_contents"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+
+        android:background="@color/white"
+        />
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+            <TextView
+                android:id="@+id/cancel_allbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Mangoplate_orange"
+                android:layout_margin="15dp"
+
+                android:layout_gravity="right"
+                android:text=" 전체 선택 취소"/>
+    <TextView
+        android:id="@+id/adjustment"
+        android:layout_width="100dp"
+        android:layout_height="36dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/adjustment_on_rouned_border_textview"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:text="적용"/>
+
+</FrameLayout>
+
+    <!--내 주변이 고정이므로 현재 내 위치를 받아야함.-->
+</LinearLayout>

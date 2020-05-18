@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thickness="3dp"
+            android:useLevel="false">
+            <solid android:color="#1AFFFFFF"/>
+        </shape>
+    </item>
+</layer-list>
+<!--   투명도 체크 현재는 투명도 10% https://m.blog.naver.com/uko02111/220882369071-->

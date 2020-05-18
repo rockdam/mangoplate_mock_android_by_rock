@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+<androidx.constraintlayout.widget.ConstraintLayout  android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="0.1dp"
+    android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="10dp"
+            android:text="지금 보고있는 지역은"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/Fragment_searchRestaurant_location_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:clickable="true"
+
+            android:background="@drawable/custom_ripple_effect"
+           >
+
+        <TextView
+            android:id="@+id/Localname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+         android:layout_marginLeft="10dp"
+            android:text="동대문구"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle=""
+            >
+
+
+        </TextView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/down_arrow"
+                ></ImageView>
+
+        </LinearLayout>
+
+     </LinearLayout>
+
+
+        </LinearLayout>
+
+    <View
+        android:id="@+id/divider_search"
+        android:layout_width="2dp"
+        android:layout_height="25dp"
+        android:background="@color/grey_300"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/restaurant_map"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="5dp" />
+
+    <ImageView
+
+        android:id="@+id/restaurant_map"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+
+        android:background="@drawable/custom_ripple_effect"
+        android:src="@drawable/restaurant_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:baselineAligned="true"
+        android:src="@drawable/restaurant_search"
+        app:layout_constraintEnd_toStartOf="@+id/divider_search"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:fillViewport="true"
+       >
+
+        <LinearLayout
+            android:descendantFocusability="blocksDescendants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+          >
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                >
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/Fragment_searchRestaurant_photos_viewpager"
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="156dp">
+
+                </androidx.viewpager.widget.ViewPager>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/Fragment_searchRestaurant_tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="bottom"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    android:layout_gravity="bottom"
+                    app:tabIndicatorHeight="0dp"
+                    />
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:layout_marginTop="-7dp"
+                >
+                <TextView
+                    android:id="@+id/alignment_button"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.17"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="19dp"
+                    android:text="추천순 ▼"
+                    android:background="@drawable/custom_ripple_effect"
+                    android:textColor="@color/grey_700"
+
+                    android:textSize="15dp"
+                    ></TextView>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="match_parent"
+                    ></TextView>
+                <ImageView
+                    android:id="@+id/distance_selector"
+                    android:layout_height="36dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/one_km"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="fitXY"
+                    >
+
+                </ImageView>
+
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_height="36dp"
+
+                    android:layout_marginLeft="5dp"
+
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.18"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/filter"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    ></ImageView>
+
+
+
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:src="@drawable/band_ad"
+                ></ImageView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_recyclerView_searchRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="100dp"
+
+
+                />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+<!--    android:nestedScrollingEnabled="false"-->
+<!--    https://black-jin0427.tistory.com/164 recyclerview 이중 스크롤 문제 -->
+    <!--    [출처] [Android] ScrollView 안에 RecyclerView 스크롤 부드럽게|작성자 Printf-->
+
+
+    <!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0.5dp"-->
+<!--        android:background="@color/black"/>-->
+</LinearLayout>
