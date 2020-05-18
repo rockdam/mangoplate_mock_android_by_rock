@@ -24,12 +24,6 @@ public class RestaurantInfoRecyclerAdapter extends RecyclerView.Adapter<Restaura
     // adapter에 들어갈 list 입니다.
     private ArrayList<RestaurantInfoResultList> listData = new ArrayList<>();
 
-    private RetaurantInformationLayout mRetaurantInformationLayout;
-
-    public RestaurantInfoRecyclerAdapter(RetaurantInformationLayout retaurantInformationLayout) {
-        this.mRetaurantInformationLayout = retaurantInformationLayout;
-
-    }
 
     @NonNull
     @Override
@@ -47,8 +41,8 @@ public class RestaurantInfoRecyclerAdapter extends RecyclerView.Adapter<Restaura
 
         holder.onBind(listData.get(position));
     }
-    public void clear()
-    {
+
+    public void clear() {
         listData.clear();
 
 
@@ -97,66 +91,67 @@ public class RestaurantInfoRecyclerAdapter extends RecyclerView.Adapter<Restaura
         private TextView infoParking;
         private TextView infoSite;
 
-        ImageView imageView_one,imageView_two,imageView_three,imageView_four;
+        ImageView imageView_one, imageView_two, imageView_three, imageView_four;
+
         ItemViewHolder(final View itemView) {
             super(itemView);
-             imageView_one=itemView.findViewById(R.id.img_one);
-             imageView_two=itemView.findViewById(R.id.img_two);
-             imageView_three=itemView.findViewById(R.id.img_three);
-             imageView_four=itemView.findViewById(R.id.img_four);
+            imageView_one = itemView.findViewById(R.id.img_one);
+            imageView_two = itemView.findViewById(R.id.img_two);
+            imageView_three = itemView.findViewById(R.id.img_three);
+            imageView_four = itemView.findViewById(R.id.img_four);
 
-              name=itemView.findViewById(R.id.name_information);
-              seenNum=itemView.findViewById(R.id.seen_num_information);
-              reviewNum=itemView.findViewById(R.id.review_num_information);
-              starNum=itemView.findViewById(R.id.star_num_information);
-              rating=itemView.findViewById(R.id.rating_information);
-              address=itemView.findViewById(R.id.address);
-              oldAddress=itemView.findViewById(R.id.old_address);
-             int userId;
-              infoUpdate=itemView.findViewById(R.id.infoUpdate);
-              infoTime=itemView.findViewById(R.id.info_time);
-              infoHoliday=itemView.findViewById(R.id.info_holiday);
-              infoPrice=itemView.findViewById(R.id.info_price);
+            name = itemView.findViewById(R.id.name_information);
+            seenNum = itemView.findViewById(R.id.seen_num_information);
+            reviewNum = itemView.findViewById(R.id.review_num_information);
+            starNum = itemView.findViewById(R.id.star_num_information);
+            rating = itemView.findViewById(R.id.rating_information);
+            address = itemView.findViewById(R.id.address);
+            oldAddress = itemView.findViewById(R.id.old_address);
+            int userId;
+            infoUpdate = itemView.findViewById(R.id.infoUpdate);
+            infoTime = itemView.findViewById(R.id.info_time);
+            infoHoliday = itemView.findViewById(R.id.info_holiday);
+            infoPrice = itemView.findViewById(R.id.info_price);
 
 
         }
 
         @SuppressLint({"ResourceAsColor", "SetTextI18n"})
         void onBind(RestaurantInfoResultList data) {
-            if (data.getImages().get(0)!= null) {
+            if (data.getImages().get(0) != null) {
 //                Glide.with(mHomeAcitivity).load(img).into(img_res);
 
 
                 Log.e("망고 식당이름!", "" + data.getImages().get(0)
                 );
                 Glide.with(itemView.getContext())
-                        .load(data.getImages().get(0).getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImages().get(0).getImageUrl())
                         .into(imageView_one);
             }
-            if (data.getImages().get(1)!= null){
+            if (data.getImages().get(1) != null) {
                 Glide.with(itemView.getContext())
-                        .load(data.getImages().get(1).getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImages().get(1).getImageUrl())
                         .into(imageView_two);
             }
-            if (data.getImages().get(2)!= null){
+            if (data.getImages().get(2) != null) {
                 Glide.with(itemView.getContext())
-                        .load(data.getImages().get(2).getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImages().get(2).getImageUrl())
                         .into(imageView_three);
             }
-            if (data.getImages().get(3)!= null){
+            if (data.getImages().get(3) != null) {
                 Glide.with(itemView.getContext())
-                        .load(data.getImages().get(3).getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImages().get(3).getImageUrl())
                         .into(imageView_four);
             }
 
             Log.e("망고 식당이름!", "" + data.getName());
-              name.setText(""+data.getName());
-              seenNum.setText(""+data.getSeenNum());
-              reviewNum.setText(""+data.getReviewNum());
-              starNum.setText(""+data.getStarNum());
-              rating.setText(""+data.getRating());
-              address.setText(""+data.getAddress());
-              oldAddress.setText("  "+data.getOldAddress());
+            name.setText("" + data.getName());
+            seenNum.setText("" + data.getSeenNum());
+            reviewNum.setText("" + data.getReviewNum());
+            starNum.setText("" + data.getStarNum());
+            rating.setText("" + data.getRating());
+            address.setText("" + data.getAddress());
+            oldAddress.setText("  " + data.getOldAddress());
             if (data.getRatingColor().equals("gray")) {
                 rating.setTextColor(Color.parseColor("#757575"));
 
@@ -164,10 +159,10 @@ public class RestaurantInfoRecyclerAdapter extends RecyclerView.Adapter<Restaura
                 rating.setTextColor(Color.parseColor("#FF7101"));
 
             }
-              infoUpdate.setText(""+data.getInfoUpdate());
-              infoTime.setText(""+data.getInfoTime());
-              infoHoliday.setText(""+data.getInfoHoliday());
-              infoPrice.setText(""+data.getInfoPrice());
+            infoUpdate.setText("" + data.getInfoUpdate());
+            infoTime.setText("" + data.getInfoTime());
+            infoHoliday.setText("" + data.getInfoHoliday());
+            infoPrice.setText("" + data.getInfoPrice());
 
         }
     }

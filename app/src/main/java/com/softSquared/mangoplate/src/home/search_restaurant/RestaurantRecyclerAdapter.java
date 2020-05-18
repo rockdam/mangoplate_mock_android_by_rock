@@ -125,7 +125,7 @@ public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRe
             if (data.getImg() != null) {
 //                Glide.with(mHomeAcitivity).load(img).into(img_res);
                 Glide.with(itemView.getContext())
-                        .load(data.getImg()).placeholder(R.drawable.loading)
+                        .load(data.getImg())
                         .into(img_res);
 
                 Log.e("뭐가 문제요", "" + data.getImg());

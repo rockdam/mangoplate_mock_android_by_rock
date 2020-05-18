@@ -203,7 +203,7 @@
                     android:adjustViewBounds="true"
                     android:src="@drawable/one_km"
                     android:layout_marginTop="10dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     >
 
                 </ImageView>
@@ -220,7 +220,7 @@
                     android:layout_marginTop="11dp"
                     android:src="@drawable/filter"
                     android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     ></ImageView>
 
 

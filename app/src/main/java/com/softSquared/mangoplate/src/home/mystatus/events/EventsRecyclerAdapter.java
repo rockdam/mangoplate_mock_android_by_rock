@@ -27,12 +27,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     // adapter에 들어갈 list 입니다.
     private ArrayList<EventsResult> listData = new ArrayList<>();
 
-    private EventsActivity mEventsActivity;
-    EventsRecyclerAdapter(EventsActivity eventsActivity)
-    {
-        this.mEventsActivity=eventsActivity;
 
-    }
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -92,7 +87,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             {
 //                Glide.with(mHomeAcitivity).load(img).into(img_res);
                 Glide.with(itemView.getContext())
-                        .load(data.getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImageUrl())
                         .into(img_res);
 
                 Log.e("뭐가 문제요",""+data.getImageUrl());

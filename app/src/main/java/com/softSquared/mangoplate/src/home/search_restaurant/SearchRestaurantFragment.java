@@ -209,7 +209,7 @@ public class SearchRestaurantFragment extends Fragment implements SearchRestaura
                 } else {
                     mLocalName.setText(Html.fromHtml("<u>" + outputDatas.get(outputDatas.size() - 1) + " 외 " + (outputDatas.size() - 1) + "곳 " + "</u>"));
                 }
-                searchRestaurantService = new SearchRestaurantService(mHomeAcitivity, mContext);
+                searchRestaurantService = new SearchRestaurantService(this, mContext);
                 searchRestaurantService.makeAreaString();
                 outputDatas.clear();
             }
@@ -259,7 +259,7 @@ public class SearchRestaurantFragment extends Fragment implements SearchRestaura
 
         if(isFirst) {
             init();// 항상 초기화
-            mSearchRestaurantService = new SearchRestaurantService(mHomeAcitivity, getContext());
+            mSearchRestaurantService = new SearchRestaurantService(this, getContext());
             mSearchRestaurantService.tryStartRestaurantsList();
 
 

@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.softSquared.mangoplate.R;
 import com.softSquared.mangoplate.src.BaseActivity;
+
+import static com.bumptech.glide.Glide.with;
 
 
 public class ActivityAdvertisement extends BaseActivity {
@@ -21,6 +25,7 @@ public class ActivityAdvertisement extends BaseActivity {
     int mEventId;
     TextView advertisement_close;
 
+    ProgressBar progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,7 @@ public class ActivityAdvertisement extends BaseActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(Color.BLACK);
         }
+        progress=new ProgressBar(getBaseContext());
     }
 
     @Override
@@ -46,13 +52,33 @@ public class ActivityAdvertisement extends BaseActivity {
 
     void setView()
     {   mAdvertisemnetImage = findViewById(R.id.advertisement_image);
-        Intent Advertisement_getResponse = getIntent();
+        Intent AdvertisementGetResponse = getIntent();
         //널 값 체크 . 잘 넘어 왔는지 . 남을 믿지 말라 .
-        mImageUrl = Advertisement_getResponse.getExtras().getString("ImageUrl");
+        mImageUrl = AdvertisementGetResponse.getExtras().getString("ImageUrl");
+        Log.e("이미지 url 체크",mImageUrl);
         advertisement_close = findViewById(R.id.advertisement_close);
-        Advertisement_getResponse.getExtras().getInt("EventId");
+        AdvertisementGetResponse.getExtras().getInt("EventId");
         // Glide로 이미지 표시하기
-        Glide.with(this).load(mImageUrl).placeholder(R.drawable.loading).into(mAdvertisemnetImage);
+       Glide. with(this).
+                load(mImageUrl)     .into(mAdvertisemnetImage);
+//                .listener(new RequestListener<String, GlideDrawable>() {
+//                    @Override
+//                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                        progress.setVisibility(View.GONE);
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//                        progress.setVisibility(View.GONE);
+//                        return false;
+//                    }
+//                })
+//                .crossFade(1000)
+
+
+
+
 
 
     }

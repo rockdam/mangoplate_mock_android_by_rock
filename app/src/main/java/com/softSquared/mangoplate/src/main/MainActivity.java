@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
@@ -62,9 +61,9 @@ public class MainActivity extends BaseActivity implements MainActivityView { // 
         AppEventsLogger.activateApp(this);
         CallbackManager callbackManager;
         callbackManager = CallbackManager.Factory.create();
-        GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(main_menu);
-        Glide.with(this).load(R.drawable.mangoplate).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.mangoplate)
-                .into(gifImage);
+//        GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(main_menu);
+//        Glide.with(this).load(R.drawable.mangoplate).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.mangoplate)
+//                .into(main_menu);
 //        출처: https://gogorchg.tistory.com/entry/Android-Glide-에서-Gif-로드가-너무-느려요 [항상 초심으로]
         mbtnKakaoLogin = findViewById(R.id.main_kakaobutton);
         mbtnKakaoLogin.setOnClickListener(new View.OnClickListener() {

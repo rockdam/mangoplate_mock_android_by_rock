@@ -34,6 +34,7 @@ public class HomeService {
 
         final HomeRetrofitInterface mainRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
         Log.e("성공", "" + "돌긴 도니 ");
+        Log.e("성공", "" + "돌긴 도니 ");
         mainRetrofitInterface.toString();
         mainRetrofitInterface.GetEvent(X_ACCESS_TOKEN).enqueue(new Callback<HomeEventResponse>() {
             @Override

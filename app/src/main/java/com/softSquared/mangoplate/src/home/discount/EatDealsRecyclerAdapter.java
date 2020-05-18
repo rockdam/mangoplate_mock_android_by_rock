@@ -98,10 +98,10 @@ public class EatDealsRecyclerAdapter extends RecyclerView.Adapter<EatDealsRecycl
         void onBind(EatDealsResult data) {
             if (data.getImageUrl() != null) {
                 Glide.with(itemView.getContext())
-                        .load(data.getImageUrl()).placeholder(R.drawable.loading)
+                        .load(data.getImageUrl())
                         .into(imageUrl);
 
-                Log.e("뭐가 문제요", "" + data.getImageUrl());
+                Log.e("이미지 url 확인", "" + data.getImageUrl());
             }
 
 

@@ -19,10 +19,7 @@ import com.softSquared.mangoplate.src.home.mystatus.events.models.EventsResult;
 import java.util.HashMap;
 
 public class EventsActivity extends BaseActivity implements EventsActivityView {
-    private EventsRecyclerAdapter madapter;
     ImageView backkey_events;
-    private EventsActivity mEventsActivity;
-    private HashMap<String, String> mEventresponse;
     private EventsRecyclerAdapter mAdapter;
     private GridLayoutManager mGridLayoutManager;
     RecyclerView mRecyclerViewEvents;
@@ -78,11 +75,11 @@ public class EventsActivity extends BaseActivity implements EventsActivityView {
 
     private void init() {
         int numberOfColumns = 1;// 한줄에 2개의 컬럼을 추가
-        mRecyclerViewEvents = mEventsActivity.findViewById(R.id.recyclerview_events);
-        mGridLayoutManager = new GridLayoutManager(mEventsActivity, numberOfColumns);
+        mRecyclerViewEvents =findViewById(R.id.recyclerview_events);
+        mGridLayoutManager = new GridLayoutManager(this, numberOfColumns);
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerViewEvents.setLayoutManager(mGridLayoutManager);
-        mAdapter = new EventsRecyclerAdapter(mEventsActivity);
+        mAdapter = new EventsRecyclerAdapter();
         mRecyclerViewEvents.setAdapter(mAdapter);
     }
 }

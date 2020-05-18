@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity android:name=".src.home.naverMapActivity.naverMapAcitivty"></activity>
         <activity android:name=".src.home.search_restaurant.restaurant_information.RetaurantInformationLayout"></activity>
@@ -84,6 +85,7 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />

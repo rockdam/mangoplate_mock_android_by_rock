@@ -15,18 +15,12 @@ import com.softSquared.mangoplate.R;
 import com.softSquared.mangoplate.src.BaseActivity;
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.interfaces.RestaurantInfoViewFragment;
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.models.RestaurantInfoResultList;
-import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.models.RestaurantInfoService;
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.models.RestaurantInfomationResponse;
 
 
 public class RetaurantInformationLayout extends BaseActivity implements RestaurantInfoViewFragment {
-    private static final int ACCESS_LOCATION_PERMISSION_REQUEST_CODE = 100;
-    private FusedLocationSource locationSource;
-    private NaverMap naverMap;
-    private InfoWindow infoWindow;
     RestaurantInfoService restaurantInfoService;
     int restaurantId;
-    private RetaurantInformationLayout mRetaurantInformationLayout;
     private RecyclerView mInfoRestaurantRecyclerView;
     private GridLayoutManager mGridLayoutManager;
     private RestaurantInfoRecyclerAdapter madapter;
@@ -37,14 +31,20 @@ public class RetaurantInformationLayout extends BaseActivity implements Restaura
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retaurant_information);
         Intent receiveIntent = getIntent();
+        init(); //리사이클러뷰 초기화
+        tryGetRestaurantInfoList();//
         restaurantId = receiveIntent.getIntExtra("restaurantId", restaurantId);
-        restaurantInfoService = new RestaurantInfoService(this, restaurantId);
-        restaurantInfoService.tryGetRestaurantInfoList();
 
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(Color.BLACK);
         }
+    }
+
+    void tryGetRestaurantInfoList() {
+        restaurantInfoService = new RestaurantInfoService(this, restaurantId);
+        restaurantInfoService.tryGetRestaurantInfoList();
+
     }
 
     @Override
@@ -61,8 +61,7 @@ public class RetaurantInformationLayout extends BaseActivity implements Restaura
     public void successUpdateRecyclerView(RestaurantInfomationResponse restaurantInfomationResponse) {
 
         madapter.clear();
-        for(RestaurantInfoResultList restaurantInfoResultList : restaurantInfomationResponse.getResult())
-        {
+        for (RestaurantInfoResultList restaurantInfoResultList : restaurantInfomationResponse.getResult()) {
 
 
             madapter.addItem(restaurantInfoResultList);
@@ -74,13 +73,12 @@ public class RetaurantInformationLayout extends BaseActivity implements Restaura
     }
 
 
-
     private void init() {
         int numberOfColumns = 1;// 한줄에 2개의 컬럼을 추가
-        mInfoRestaurantRecyclerView = mRetaurantInformationLayout.findViewById(R.id.recyclerview_informaiton);
+        mInfoRestaurantRecyclerView = findViewById(R.id.recyclerview_informaiton);
         mGridLayoutManager = new GridLayoutManager(this, numberOfColumns);
         mInfoRestaurantRecyclerView.setLayoutManager(mGridLayoutManager);
-        madapter = new RestaurantInfoRecyclerAdapter(mRetaurantInformationLayout);
+        madapter = new RestaurantInfoRecyclerAdapter();
         mInfoRestaurantRecyclerView.setAdapter(madapter);
 
 

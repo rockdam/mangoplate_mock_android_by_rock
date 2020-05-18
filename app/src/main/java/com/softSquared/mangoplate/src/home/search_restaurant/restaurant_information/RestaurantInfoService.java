@@ -1,4 +1,4 @@
-package com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.models;
+package com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,7 @@ import com.softSquared.mangoplate.src.home.search_restaurant.models.RestaurantRe
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.RestaurantInfoRecyclerAdapter;
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.interfaces.RestaurantInfoRetrofitInterface;
 import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.interfaces.RestaurantInfoViewFragment;
+import com.softSquared.mangoplate.src.home.search_restaurant.restaurant_information.models.RestaurantInfomationResponse;
 
 import java.util.ArrayList;
 
@@ -33,11 +34,10 @@ public class RestaurantInfoService {
     private ArrayList<RestaurantResult> listData = new ArrayList<>();
     int mRestaurantId;
 
-    public RestaurantInfoService( RestaurantInfoViewFragment mRestaurantInfoViewFragment, int restaurantId) {
+    public RestaurantInfoService(RestaurantInfoViewFragment mRestaurantInfoViewFragment, int restaurantId) {
         this.mRestaurantInfoViewFragment = mRestaurantInfoViewFragment;
-        this.mRestaurantId =restaurantId;
+        this.mRestaurantId = restaurantId;
     }
-
 
 
     public void tryGetRestaurantInfoList() {
@@ -51,29 +51,26 @@ public class RestaurantInfoService {
             @Override
             public void onResponse(Call<RestaurantInfomationResponse> call, Response<RestaurantInfomationResponse> response) {
                 mRestaurantInfomationResponse = response.body();
-                Log.e("망고 안되네", "area");
                 if (mRestaurantInfomationResponse.getResult() != null) {
 
-                        if (response.code() == 200) {
+                    if (response.code() == 200) {
 
-                            if (mRestaurantInfomationResponse.getResult() != null) {
+                        if (mRestaurantInfomationResponse.getResult() != null) {
 
-                                mRestaurantInfoViewFragment.successUpdateRecyclerView(mRestaurantInfomationResponse);
+                            mRestaurantInfoViewFragment.successUpdateRecyclerView(mRestaurantInfomationResponse);
 
-
-
-                            }
-
-                        } else {
-                            mHomeActivityView.validateFailure(null);
 
                         }
 
+                    } else {
+                        mHomeActivityView.validateFailure(null);
 
                     }
 
-                    madapter.notifyDataSetChanged();
+
                 }
+
+            }
 
             @Override
             public void onFailure(Call<RestaurantInfomationResponse> call, Throwable t) {
@@ -81,14 +78,10 @@ public class RestaurantInfoService {
             }
 
 
-
-
         });
 
 
-
     }
-
 
 
 }

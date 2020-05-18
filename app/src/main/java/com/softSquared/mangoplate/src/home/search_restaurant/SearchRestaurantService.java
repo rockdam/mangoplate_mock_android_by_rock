@@ -27,18 +27,14 @@ import static com.softSquared.mangoplate.src.home.search_restaurant.localSearchT
 public class SearchRestaurantService {
     private HomeActivityView mHomeActivityView;
 
-    private HomeAcitivity mHomeAcitivity;
     private RestaurantResultResponse mRestaurantResultResponse;
-    private RecyclerView searchRestaurantRecyclerView;
-    private GridLayoutManager mGridLayoutManager;
     private SearchRestaurantFragment mSearchRestaurantFragment;
-    private RestaurantRecyclerAdapter madapter;
     private Context mContext;
     private String area =""; // 쿼리 ?area= .......;
     private ArrayList<RestaurantResult> listData = new ArrayList<>();
 
-    SearchRestaurantService(final HomeAcitivity homeAcitivity, final Context context) {
-        this.mHomeAcitivity = homeAcitivity;
+    SearchRestaurantService(final SearchRestaurantFragment mSearchRestaurantFragment, final Context context) {
+        this.mSearchRestaurantFragment = mSearchRestaurantFragment;
         this.mContext = context;
     }
 
@@ -69,7 +65,7 @@ public class SearchRestaurantService {
         Log.e("망고 area", area);
         searchRetrofitInterface.toString();
 
-        searchRetrofitInterface.getRestaurants(X_ACCESS_TOKEN,  ApplicationClass.lat,   ApplicationClass.lng, "main", "금천구").enqueue(new Callback<RestaurantResultResponse>() {
+        searchRetrofitInterface.getRestaurants(X_ACCESS_TOKEN,  ApplicationClass.lat,   ApplicationClass.lng, "main", area).enqueue(new Callback<RestaurantResultResponse>() {
             @Override
             public void onResponse(Call<RestaurantResultResponse> call, Response<RestaurantResultResponse> response) {
                 mRestaurantResultResponse = response.body();
@@ -139,9 +135,9 @@ public class SearchRestaurantService {
 
                 if (mRestaurantResultResponse.getResult() != null && mRestaurantResultResponse.getResult().size() > 0) {
                     if (response.code() == 200) {
-                        mSearchRestaurantFragment.successUpdateRecyclerView(mRestaurantResultResponse);
-                        if (mRestaurantResultResponse.getResult() != null) {
 
+                        if (mRestaurantResultResponse.getResult() != null) {
+                            mSearchRestaurantFragment.successUpdateRecyclerView(mRestaurantResultResponse);
 //                                Log.e("망고 식당이름", "" + result.getTitle());
 //                                Log.e("망고 지역", "" + result.getArea());
 //                                Log.e("망고 이미지url", "" + result.getImg());
@@ -163,7 +159,6 @@ public class SearchRestaurantService {
 
                 }
 
-                madapter.notifyDataSetChanged();
             }
 
             @Override

@@ -137,7 +137,7 @@ public class naverMapAcitivty extends BaseActivity implements NaverMap.OnMapClic
 
 
                 ImageView img =view.findViewById(R.id.img_restarant);
-                Glide.with(naverMapAcitivty.this).load(mapResult.getImg()).placeholder(R.drawable.loading).into(img);
+                Glide.with(naverMapAcitivty.this).load(mapResult.getImg()).into(img);
 
                 title_res = view.findViewById(R.id.title_restarant);
                 area_res = view.findViewById(R.id.area_restaurant); // 얘는 settext 할 때 거리를 붙여야함
