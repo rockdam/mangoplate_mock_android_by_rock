@@ -71,14 +71,7 @@ public class RestaurantRecyclerAdapter extends RecyclerView.Adapter<RestaurantRe
     // 여기서 subView를 setting 해줍니다.
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        private String area;
-        private String img;
-        private String title;
-        private String distance;
-        private String seenNum;
-        private String reviewNum;
-        private float rating;
-        private String ratingColor;
+
 
         int mRestaurantId;
         private Intent mMoveIntent;

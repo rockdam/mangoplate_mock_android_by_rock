@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import it.sephiroth.android.library.viewrevealanimator.ViewRevealAnimator;
 
+import android.Manifest;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;

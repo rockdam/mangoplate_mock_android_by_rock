@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         app:tabGravity="center"
 
+
         android:background="@color/white"
         app:tabIndicatorColor="@color/Mangoplate_orange"
         app:tabMode="fixed"

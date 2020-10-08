@@ -67,7 +67,6 @@ public class RetaurantInformationLayout extends BaseActivity implements Restaura
             madapter.addItem(restaurantInfoResultList);
 
         }
-
         madapter.notifyDataSetChanged();
 
     }
